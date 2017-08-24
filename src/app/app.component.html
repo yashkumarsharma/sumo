@@ -1,0 +1,36 @@
+<div class="dialog">
+  <div class="dialog-header"><h1>Select an Employee</h1></div>
+  <div>
+    <input type="checkbox" id="checkbox" />
+    <label for="checkbox">Send welcome email to employee</label>
+  </div>
+  <div class="input-parent">
+    <div class="team-label"><h4>Select a Team in the Organization</h4></div>
+    <div class="input-dropdown-wrapper">
+      <input type="text" (focus)="teamInputFocus=true" (focusout)="teamInputFocus=false" [ngClass]="{'bg-white': teamInputFocus}" [(ngModel)]="teamSelected" (keyup)="onTeamInputKeyup()" class="input-dropdown" placeholder="Select Team..." />
+    </div>
+    <div *ngIf="teamSuggestionOpen" class="suggestion-box">
+      <ul>
+        <li (click)="selectTeam(team)" *ngFor="let team of suggestedTeams">{{team}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="input-parent">
+    <div class="team-label"><h4>Select an Employee</h4></div>
+    <div class="input-dropdown-wrapper">
+      <input type="text" (focus)="employeeInputFocus=true" (focusout)="employeeInputFocus=false" [ngClass]="{'bg-white': employeeInputFocus}" [(ngModel)]="employeeSelected" (keyup)="onEmployeeInputKeyup()" class="input-dropdown" placeholder="Select Employee..." />
+    </div>
+    <div *ngIf="employeeSuggestionOpen" class="suggestion-box">
+        <ul>
+          <li (click)="selectEmployee(employee)" *ngFor="let employee of suggestedEmployees">{{employee}}</li>
+        </ul>
+    </div>
+  </div>
+  <div>
+      <div class="dialog-btns">
+          <button>Cancel</button>
+          <button>OK</button>
+      </div>
+      <div class="clear-float"></div>
+  </div>
+</div>
